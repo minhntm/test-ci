@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - dev
+      - main
+
+jobs:
+  test:
+    name: "Lint & Test"
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build 🏗️
+        run: echo "Done"
