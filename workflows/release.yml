@@ -1,0 +1,36 @@
+name: Test CI/CD
+
+on:
+  push:
+    tags:
+      - "release*"
+
+jobs:
+  test:
+    name: "Lint & Test"
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build 🏗️
+        run: echo "Done"
+
+  deploy:
+    name: "Deploy"
+    runs-on: ubuntu-latest
+    needs: test
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy Prod
+        run: echo "Done"
